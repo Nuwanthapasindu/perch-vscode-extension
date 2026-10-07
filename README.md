@@ -1,17 +1,22 @@
-# Antigravity CLI — VS Code Extension
+# Perch — VS Code Side Panel for Google Antigravity CLI
 
-> Open the **Antigravity CLI** (`agy`) directly inside VS Code — on the **right side panel**, just like Claude Code and Codex.
+> Open Google's **Antigravity CLI** (`agy`) directly inside VS Code — perched on a dedicated **right-side panel**, providing a side-panel experience similar to other AI coding extensions.
+
+> **Disclaimer:** Perch is an independent project and is not affiliated with, sponsored by, or endorsed by Google. Antigravity is a trademark of Google LLC. Perch requires Google's Antigravity CLI (`agy`) to be installed separately.
 
 [![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/nuwanthapasindu.antigravity-cli?label=VS%20Code%20Marketplace&logo=visual-studio-code&logoColor=white&color=0078d7)](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.antigravity-cli)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/nuwanthapasindu.antigravity-cli?color=brightgreen)](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.antigravity-cli)
 
-![Extension Icon](icon.png)
+<p align="center">
+  <img src="icon.png" alt="Perch Extension Icon" width="160" />
+</p>
 
 ---
 
 ## Table of Contents
 
 - [Overview](#overview)
+- [What's New in v0.0.3](#whats-new-in-v003)
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -24,14 +29,24 @@
 - [Configuration](#configuration)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
+- [License](#license)
 
 ---
 
 ## Overview
 
-**Antigravity CLI** is a VS Code extension that integrates the `agy` (Antigravity CLI) AI coding assistant into your editor environment. Instead of switching to a separate terminal window, `agy` opens as a **right-side editor panel** — keeping your code visible on the left and the AI assistant on the right.
+**Perch** is an independent VS Code extension that seamlessly integrates Google's Antigravity CLI (`agy`) AI coding assistant into your editor. Instead of constantly context-switching to a separate terminal window, `agy` opens as a **right-side editor panel** — keeping your code visible on the left and your AI assistant perched right beside it.
 
-This extension mirrors the UX of Claude Code and Codex extensions, but is purpose-built for the [Antigravity CLI](https://antigravity.google).
+This provides a side-panel experience similar to other AI coding extensions, customized specifically for developers using the Google Antigravity CLI.
+
+---
+
+## What's New in v0.0.3
+
+- **Rebranded to Perch:** Complete brand refresh with a modern split-panel icon and redesigned interface elements.
+- **Updated Settings:** Introduced `perch.executable` and `perch.defaultArgs`. Existing user settings under `antigravity.executable` and `antigravity.defaultArgs` continue to work automatically through backward-compatible fallback.
+- **Refined Command Palette:** All commands and side-panel views are now grouped under the **Perch** name (e.g., `Perch: Open Terminal`).
+- **Drag & Drop Support (v0.0.2):** Drag files directly from VS Code Explorer into the active Perch terminal while holding `Shift` to paste absolute paths.
 
 ---
 
@@ -39,37 +54,15 @@ This extension mirrors the UX of Claude Code and Codex extensions, but is purpos
 
 | Feature | Description |
 |---|---|
-| **Activity Bar Icon** | Antigravity icon in the left sidebar — click to open the welcome panel |
+| **Activity Bar Icon** | Perch icon in the left sidebar — click to open the welcome panel |
 | **Right-Side Terminal** | `agy` opens as an editor tab on the right (not the bottom panel) |
-| **Top-Right Button** | Icon button in every editor's top-right corner for instant access |
-| **Status Bar Item** | `AGY` indicator at the bottom-left — always visible, click to open |
+| **Top-Right Button** | Perch button in every editor's top-right corner for instant access |
+| **Status Bar Item** | `Perch` indicator at the bottom-left — always visible, click to open |
 | **Keyboard Shortcut** | `Cmd+Shift+A` (Mac) / `Ctrl+Shift+A` (Windows/Linux) |
 | **Command Palette** | Full command palette support for Open / Restart / Stop |
 | **Smart Reuse** | Focuses existing terminal instead of opening duplicates |
 | **Auto-Close** | Terminal closes automatically when you run `/exit` in `agy` |
-| **Configurable** | Set a custom `agy` path and default launch arguments |
-
-## Changelog & Implementation History
-
-| Date | Change | Description |
-| :--- | :--- | :--- |
-| **2026-09-13** | **Phase 9: Permission Gate & Execution Mode System** | Added execution mode selector (`⚡ Accept Edits`, `🛡️ Review All`, `📖 Plan Only`, `🚀 Auto-Approve`), bidirectional stdin permission authorization (`Allow Once`, `Always Allow (Session)`, `Deny`), native VS Code notifications fallback for backgrounded webviews, and `antigravity.mode` configuration setting. |
-| **2026-09-13** | **Phase 8: @file Mentions, Command Terminal Viewer & Git Awareness** | Workspace file autocomplete when typing `@` in the composer with auto-context chips, dark interactive Terminal Console cards for `run_command` tool execution with stdout/stderr preview and copy button, and live Git branch and dirty-file status badge in the header with one-click Source Control reveal. |
-| **2026-09-13** | **Phase 7: Polish, Shortcuts & Accessibility** | Right-click editor actions (`Ask About Selected Code`, `Explain`, `Refactor`), keyboard navigation (`Escape`, `Cmd+K`/`Ctrl+K`, `Cmd+Shift+N`), ARIA accessibility roles, high-contrast support, and non-blocking asynchronous Mermaid script loading. |
-| **2026-09-13** | **Phase 6: Session History & Resumption** | **"📜 History"** drawer indexing previous conversations from `~/.gemini/antigravity-cli/brain/`, search bar filter, date groupings (`Today`, `Yesterday`, `Older`), transcript loader, and live resumption using `agy --conversation <id>`. |
-| **2026-09-13** | **Phase 5: Inline Diff Previews & Native Review** | In-chat unified diff cards with line numbers and green/red `+`/`-` line additions/deletions, collapse/expand toggle, and a **Review Diff** button opening VS Code's native `vscode.diff` split editor. |
-| **2026-09-13** | **Phase 4: Tool Activity Visualization** | Live activity accordion displaying active tools (`view_file`, `list_dir`, `grep_search`, `write_to_file`, `run_command`) with running spinners, duration timers, and exit status badges. |
-| **2026-09-13** | **Phase 3: Context & Selection Tracking** | Automatic detection of active text editor files and cursor selections; dismissible context chips; automatic prompt framing with workspace context. |
-| **2026-09-13** | **Phase 2: Core Agent UI & Streaming** | Native Codex-style composer (auto-resizing, Enter to send, Shift+Enter for newline), live Markdown streaming, syntax-highlighted code blocks with Copy buttons, and embedded Mermaid diagram visualizer. |
-| **2026-09-13** | **Phase 1: Headless Process Bridge** | Bidirectional NDJSON streaming IPC over `agy --input-format stream-json --output-format stream-json` with process lifecycle management while preserving 100% of existing terminal integration. |
-| **2026-08-01** | **v0.0.2: Native Drag and Drop** | Seamlessly add files to CLI context by dragging from VS Code Explorer into terminal while holding `Shift`. |
-
-## What's New in v0.0.2
-
-- **Native Drag and Drop Support:** You can seamlessly add files to your CLI context by dragging them directly from the VS Code Explorer into the active Antigravity terminal. **Note: You must hold the `Shift` key while dropping the file to paste the absolute path.**
-
-  ![Hold Shift Key to Drop Files](resources/hold-shift-key.gif)
-
+| **Configurable** | Set custom executable path and default arguments (`perch.executable`, `perch.defaultArgs`) |
 
 ---
 
@@ -79,7 +72,7 @@ Before installing the extension, make sure you have:
 
 - **VS Code** `v1.85.0` or higher
 - **Node.js** `v18+` and **npm** (only needed if building from source)
-- **Antigravity CLI (`agy`)** installed and available in your `PATH`
+- **Google Antigravity CLI (`agy`)** installed and available in your `PATH`
 
 ### Verify `agy` is installed
 
@@ -87,7 +80,7 @@ Before installing the extension, make sure you have:
 agy --version
 ```
 
-If `agy` is not found, install it from the [official Antigravity docs](https://antigravity.google/docs).
+If `agy` is not found, install it following the official Google Antigravity CLI documentation.
 
 ---
 
@@ -97,9 +90,9 @@ If `agy` is not found, install it from the [official Antigravity docs](https://a
 
 The extension is **published on the VS Code Marketplace** — install it in one click:
 
-**[Install Antigravity CLI on VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.antigravity-cli)**
+**[Install Perch on VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.antigravity-cli)**
 
-Or search for **`Antigravity CLI`** in the VS Code Extensions panel (`Cmd+Shift+X`).
+Or search for **`Perch`** in the VS Code Extensions panel (`Cmd+Shift+X`).
 
 ---
 
@@ -107,37 +100,37 @@ Or search for **`Antigravity CLI`** in the VS Code Extensions panel (`Cmd+Shift+
 
 If you prefer to install manually from a `.vsix` file:
 
-**Step 2 — Install via VS Code UI**
+**Install via VS Code UI:**
 
 1. Open VS Code
 2. Press `Cmd+Shift+P` (Mac) / `Ctrl+Shift+P` (Windows/Linux)
 3. Type `Extensions: Install from VSIX...` and press Enter
-4. Select the downloaded `.vsix` file
+4. Select `perch-0.0.3.vsix`
 
-**Or install via the terminal:**
+**Or install via terminal:**
 
 ```bash
-code --install-extension antigravity-cli-0.0.2.vsix
+code --install-extension perch-0.0.3.vsix
 ```
 
-**Step 3 — Reload VS Code**
+**Reload VS Code:**
 
 ```
 Cmd+Shift+P → Developer: Reload Window
 ```
 
-The Antigravity icon will appear in the Activity Bar.
+The Perch icon will appear in the Activity Bar.
 
 ---
 
 ### Install from Source
 
-If you want to build and install the latest version directly from the source code:
+If you want to build and install the latest version directly from source code:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/Nuwanthapasindu/antigravity-cli-vs-code-extension.git
-cd antigravity-cli-vs-code-extension
+git clone https://github.com/Nuwanthapasindu/perch-vscode-extension.git
+cd perch-vscode-extension
 
 # 2. Install dependencies
 npm install
@@ -149,7 +142,7 @@ npm run compile
 npm run package
 
 # 5. Install the VSIX into VS Code
-code --install-extension antigravity-cli-0.0.2.vsix
+code --install-extension perch-0.0.3.vsix
 
 # 6. Reload VS Code
 # Cmd+Shift+P → Developer: Reload Window
@@ -174,8 +167,8 @@ npm --version
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/Nuwanthapasindu/antigravity-cli-vs-code-extension.git
-cd antigravity-cli-vs-code-extension
+git clone https://github.com/Nuwanthapasindu/perch-vscode-extension.git
+cd perch-vscode-extension
 ```
 
 **2. Install dependencies**
@@ -192,9 +185,9 @@ This installs all `devDependencies` including TypeScript, `@types/vscode`, and `
 npm run compile
 ```
 
-This compiles all `.ts` files from `src/` into `out/` using the `tsconfig.json` configuration.
+This compiles all `.ts` files from `src/` into `out/` using `tsconfig.json`.
 
-Expected output — four compiled files in `out/`:
+Expected output — compiled files in `out/`:
 ```
 out/
 ├── extension.js
@@ -209,9 +202,9 @@ out/
 npm run package
 ```
 
-This runs `vsce package` and produces `antigravity-cli-0.0.2.vsix`.
+This runs `vsce package` and produces `perch-0.0.3.vsix`.
 
-> **Note:** The VSIX file contains only the compiled `out/` files, `resources/`, `icon.png`, `package.json`, and `README.md`. Source files and `node_modules` are excluded via `.vscodeignore`.
+> **Note:** The VSIX package contains only compiled `out/` files, `resources/`, `icon.png`, `package.json`, and `README.md`. Source files and `node_modules` are excluded via `.vscodeignore`.
 
 ---
 
@@ -223,7 +216,7 @@ The fastest way to test your changes is to use the **Extension Development Host*
 
 1. Open the project folder in VS Code:
    ```bash
-   code /path/to/antigravity-cli-vs-code-extension
+   code /path/to/perch-vscode-extension
    ```
 
 2. Make sure you have compiled the code at least once:
@@ -236,7 +229,7 @@ The fastest way to test your changes is to use the **Extension Development Host*
 VS Code will:
 - Start a TypeScript watch build (`npm run watch`)
 - Launch a new **Extension Development Host** window
-- Load your extension automatically in that window
+- Load Perch automatically in that window
 
 ### Watch Mode (Auto-recompile)
 
@@ -246,34 +239,28 @@ To automatically recompile on every file save:
 npm run watch
 ```
 
-While watch mode is running, press `F5` to launch the host. Changes you save will recompile instantly — just run `Developer: Reload Window` in the host to pick them up.
-
-### Debugging Tips
-
-- Set **breakpoints** in any `src/*.ts` file — they work directly in the host via source maps
-- Use the **Debug Console** (`Cmd+Shift+Y`) in the main VS Code window to view `console.log` output from your extension
-- Open the **Output panel** (`Cmd+Shift+U`) and select `Extension Host` to see extension logs
+While watch mode is running, press `F5` to launch the host. Changes you save will recompile instantly — run `Developer: Reload Window` in the host to pick them up.
 
 ---
 
 ## Usage
 
-Once installed and reloaded, use any of these methods to open the `agy` terminal:
+Once installed and reloaded, use any of these methods to open the terminal:
 
 | Method | Action |
 |---|---|
-| **Activity Bar** | Click the Antigravity icon in the left sidebar → click **Open AGY Terminal** |
-| **Top-Right Button** | Click the Antigravity icon in the top-right corner of any editor tab |
-| **Status Bar** | Click **AGY** at the bottom-left of VS Code |
+| **Activity Bar** | Click the Perch icon in the left sidebar → click **Open Perch Terminal** |
+| **Top-Right Button** | Click the Perch icon in the top-right corner of any editor tab |
+| **Status Bar** | Click **Perch** at the bottom-left of VS Code |
 | **Keyboard Shortcut** | `Cmd+Shift+A` (Mac) / `Ctrl+Shift+A` (Windows/Linux) |
-| **Command Palette** | `Cmd+Shift+P` → `Antigravity CLI: Open Terminal` |
+| **Command Palette** | `Cmd+Shift+P` → `Perch: Open Terminal` |
 
 ### Other Commands (Command Palette)
 
 ```
-Antigravity CLI: Open Terminal     → Opens or focuses the AGY terminal
-Antigravity CLI: Restart Terminal  → Kills and restarts the AGY terminal
-Antigravity CLI: Stop Terminal     → Closes the AGY terminal
+Perch: Open Terminal     → Opens or focuses the Perch terminal
+Perch: Restart Terminal  → Kills and restarts the Perch terminal
+Perch: Stop Terminal     → Closes the Perch terminal
 ```
 
 ### Exiting
@@ -284,22 +271,31 @@ Type `/exit` inside `agy` — the terminal panel will close automatically.
 
 ## Configuration
 
-Open VS Code Settings (`Cmd+,`) and search for `antigravity` to configure:
+Open VS Code Settings (`Cmd+,`) and search for `perch` to configure:
 
 | Setting | Type | Default | Description |
 |---|---|---|---|
-| `antigravity.executable` | `string` | `"agy"` | Path to the `agy` binary |
-| `antigravity.defaultArgs` | `string[]` | `[]` | Arguments passed to `agy` on every launch |
+| `perch.executable` | `string` | `"agy"` | Path to the Google Antigravity CLI binary |
+| `perch.defaultArgs` | `string[]` | `[]` | Arguments passed to `agy` on every launch |
+
+### Backward Compatibility
+
+For existing installations, Perch seamlessly falls back to legacy settings if configured:
+
+| Legacy Setting | Status | Replacement |
+|---|---|---|
+| `antigravity.executable` | Deprecated | `perch.executable` |
+| `antigravity.defaultArgs` | Deprecated | `perch.defaultArgs` |
 
 ### Example: Custom executable path
 
-If `agy` is not in your `PATH`, set the full path:
+If `agy` is not in your default system `PATH`, set the full path:
 
 ```json
 // settings.json
 {
-  "antigravity.executable": "/Users/yourname/.local/bin/agy",
-  "antigravity.defaultArgs": []
+  "perch.executable": "/Users/yourname/.local/bin/agy",
+  "perch.defaultArgs": []
 }
 ```
 
@@ -308,11 +304,11 @@ If `agy` is not in your `PATH`, set the full path:
 ## Project Structure
 
 ```
-antigravity-cli-vs-code-extension/
+perch-vscode-extension/
 │
 ├── src/                          ← TypeScript source files
 │   ├── extension.ts              ← Entry point (activate / deactivate)
-│   ├── terminalManager.ts        ← Terminal lifecycle management
+│   ├── terminalManager.ts        ← Terminal lifecycle management & config fallback
 │   ├── statusBarManager.ts       ← Status bar item (idle / running states)
 │   └── welcomeViewProvider.ts    ← Sidebar webview panel HTML
 │
@@ -323,18 +319,21 @@ antigravity-cli-vs-code-extension/
 │   └── welcomeViewProvider.js
 │
 ├── resources/
-│   └── icon.svg                  ← Fallback SVG icon
+│   ├── icon.svg                  ← Activity Bar / Command SVG vector icon
+│   └── hold-shift-key.gif        ← Drag-and-drop feature demonstration
 │
 ├── .vscode/
 │   ├── launch.json               ← F5 debug configuration
 │   └── tasks.json                ← TypeScript watch build task
 │
-├── icon.png                      ← Extension icon (activity bar, terminal tab, marketplace)
+├── icon.png                      ← Perch extension icon (Marketplace, Webview, Terminal tab)
 ├── package.json                  ← Extension manifest (commands, keybindings, menus)
 ├── tsconfig.json                 ← TypeScript compiler configuration
 ├── .eslintrc.json                ← ESLint rules
 ├── .vscodeignore                 ← Files excluded from the VSIX package
 ├── .gitignore
+├── CHANGELOG.md                  ← Release history
+├── LICENSE                       ← MIT License
 └── README.md
 ```
 
@@ -345,7 +344,7 @@ antigravity-cli-vs-code-extension/
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/antigravity-cli-vs-code-extension.git
+   git clone https://github.com/Nuwanthapasindu/perch-vscode-extension.git
    ```
 3. Create a feature branch:
    ```bash

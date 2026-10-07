@@ -18,17 +18,17 @@ export class StatusBarManager {
         context.subscriptions.push(this.statusBarItem);
     }
 
-    /** Shows a spinning icon while AGY is running. */
+    /** Shows a spinning icon while Perch is running. */
     setRunning(): void {
-        this.statusBarItem.text = '$(sync~spin) AGY';
+        this.statusBarItem.text = '$(sync~spin) Perch';
         this.statusBarItem.tooltip =
-            'Antigravity CLI is running — click to focus terminal';
+            'Perch is running — click to focus terminal';
     }
 
     /** Shows the default idle state. */
     setIdle(): void {
-        this.statusBarItem.text = '$(hubot) AGY';
+        this.statusBarItem.text = '$(terminal) Perch';
         this.statusBarItem.tooltip =
-            'Click to open Antigravity CLI terminal  |  ⌘⇧A';
+            'Click to open Perch terminal  |  ⌘⇧A';
     }
 }

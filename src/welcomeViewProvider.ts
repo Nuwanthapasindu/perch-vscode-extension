@@ -19,7 +19,11 @@ export class WelcomeViewProvider implements vscode.WebviewViewProvider {
             localResourceRoots: [this.extensionUri],
         };
 
-        webviewView.webview.html = this.getHtmlContent();
+        const iconUri = webviewView.webview.asWebviewUri(
+            vscode.Uri.joinPath(this.extensionUri, 'icon.png')
+        );
+
+        webviewView.webview.html = this.getHtmlContent(iconUri);
 
         // Handle messages posted from the webview
         webviewView.webview.onDidReceiveMessage((message: { command: string }) => {
@@ -36,21 +40,21 @@ export class WelcomeViewProvider implements vscode.WebviewViewProvider {
                 case 'openSettings':
                     vscode.commands.executeCommand(
                         'workbench.action.openSettings',
-                        'antigravity'
+                        'perch'
                     );
                     break;
             }
         });
     }
 
-    private getHtmlContent(): string {
+    private getHtmlContent(iconUri: vscode.Uri): string {
         return /* html */ `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline';">
-    <title>Antigravity CLI</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src https: data: \${iconUri.scheme}:; style-src 'unsafe-inline'; script-src 'unsafe-inline';">
+    <title>Perch</title>
     <style>
         * {
             box-sizing: border-box;
@@ -78,9 +82,12 @@ export class WelcomeViewProvider implements vscode.WebviewViewProvider {
             padding: 12px 0 8px;
         }
 
-        .logo {
-            font-size: 40px;
-            line-height: 1;
+        .logo-img {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            object-fit: contain;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
         .title {
@@ -214,15 +221,15 @@ export class WelcomeViewProvider implements vscode.WebviewViewProvider {
 <body>
     <!-- Header -->
     <div class="header">
-        <div class="logo">🚀</div>
-        <span class="title">Antigravity CLI</span>
+        <img class="logo-img" src="${iconUri}" alt="Perch Logo" />
+        <span class="title">Perch</span>
         <span class="subtitle">${this.description}</span>
     </div>
 
     <!-- Primary actions -->
     <div class="btn-group">
         <button class="btn-primary" onclick="send('openTerminal')">
-            ▶ Open AGY Terminal
+            ▶ Open Perch Terminal
         </button>
         <button class="btn-secondary" onclick="send('restartTerminal')">
             ↺ Restart Terminal
@@ -246,14 +253,14 @@ export class WelcomeViewProvider implements vscode.WebviewViewProvider {
 
     <!-- Info block -->
     <div class="info-section">
-        Launches <strong>agy</strong> in a dedicated terminal in your current workspace directory.
+        Launches Google Antigravity CLI (<strong>agy</strong>) in a dedicated terminal on the right side of your workspace.
     </div>
 
     <hr class="divider">
 
     <!-- What's New -->
     <div class="info-section" style="border-left-color: var(--vscode-terminal-ansiGreen, #4CAF50);">
-        <strong>✨ What's New:</strong> You can now drag and drop files directly into the terminal editor to instantly add them to your context! <em>(Tip: hold Shift while dropping to paste the path).</em>
+        <strong>✨ What's New:</strong> You can drag and drop files directly into the terminal editor to paste their paths! <em>(Tip: hold Shift while dropping).</em>
     </div>
 
     <!-- Settings -->
@@ -264,7 +271,7 @@ export class WelcomeViewProvider implements vscode.WebviewViewProvider {
         </button>
     </div>
 
-    <div class="footer">Antigravity CLI v${this.version}</div>
+    <div class="footer">Perch v${this.version}</div>
 
     <script>
         // eslint-disable-next-line no-undef
