@@ -1,14 +1,19 @@
 {
   "name": "antigravity-cli",
-  "displayName": "Antigravity CLI",
-  "description": "Open Antigravity CLI (agy) in VS Code terminal — your AI-powered coding assistant",
-  "version": "0.0.2",
+  "displayName": "Perch for Google Antigravity CLI",
+  "description": "Open Google's Antigravity CLI in a dedicated right-side panel in VS Code. Independent project, not affiliated with or endorsed by Google.",
+  "version": "0.0.3",
   "publisher": "nuwanthapasindu",
+  "license": "MIT",
   "icon": "icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Nuwanthapasindu/antigravity-cli-vs-code-extension"
+    "url": "https://github.com/Nuwanthapasindu/perch-vscode-extension"
   },
+  "bugs": {
+    "url": "https://github.com/Nuwanthapasindu/perch-vscode-extension/issues"
+  },
+  "homepage": "https://github.com/Nuwanthapasindu/perch-vscode-extension#readme",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -17,11 +22,12 @@
     "Machine Learning"
   ],
   "keywords": [
-    "antigravity",
-    "agy",
-    "ai",
+    "perch",
     "terminal",
-    "cli"
+    "ai assistant",
+    "cli",
+    "developer tools",
+    "google antigravity cli"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
@@ -29,20 +35,23 @@
     "commands": [
       {
         "command": "antigravity.openTerminal",
-        "title": "Antigravity CLI: Open Terminal",
+        "title": "Open Terminal",
+        "category": "Perch",
         "icon": {
-          "light": "icon.png",
-          "dark": "icon.png"
+          "light": "resources/icon.svg",
+          "dark": "resources/icon.svg"
         }
       },
       {
         "command": "antigravity.restartTerminal",
-        "title": "Antigravity CLI: Restart Terminal",
+        "title": "Restart Terminal",
+        "category": "Perch",
         "icon": "$(debug-restart)"
       },
       {
         "command": "antigravity.stopTerminal",
-        "title": "Antigravity CLI: Stop Terminal",
+        "title": "Stop Terminal",
+        "category": "Perch",
         "icon": "$(debug-stop)"
       }
     ],
@@ -57,8 +66,8 @@
       "activitybar": [
         {
           "id": "antigravity-sidebar",
-          "title": "Antigravity CLI",
-          "icon": "icon.png"
+          "title": "Perch",
+          "icon": "resources/icon.svg"
         }
       ]
     },
@@ -67,26 +76,40 @@
         {
           "type": "webview",
           "id": "antigravity.welcomeView",
-          "name": "Antigravity CLI"
+          "name": "Perch"
         }
       ]
     },
     "terminal": {
       "profiles": [
         {
-          "title": "Antigravity CLI",
+          "title": "Perch",
           "id": "antigravity.terminalProfile",
-          "icon": "hubot"
+          "icon": "terminal"
         }
       ]
     },
     "configuration": {
-      "title": "Antigravity CLI",
+      "title": "Perch",
       "properties": {
+        "perch.executable": {
+          "type": "string",
+          "default": "agy",
+          "description": "Path to the Google Antigravity CLI executable (default: agy, assuming it is in your PATH)."
+        },
+        "perch.defaultArgs": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "Default arguments to pass to the CLI executable on launch."
+        },
         "antigravity.executable": {
           "type": "string",
           "default": "agy",
-          "description": "Path to the agy executable (default: agy, assuming it is in your PATH)"
+          "description": "Legacy setting: Path to the agy executable.",
+          "deprecationMessage": "This setting is deprecated. Please use 'perch.executable' instead."
         },
         "antigravity.defaultArgs": {
           "type": "array",
@@ -94,7 +117,8 @@
           "items": {
             "type": "string"
           },
-          "description": "Default arguments to pass to agy on launch"
+          "description": "Legacy setting: Default arguments to pass to agy on launch.",
+          "deprecationMessage": "This setting is deprecated. Please use 'perch.defaultArgs' instead."
         }
       }
     },
@@ -113,7 +137,7 @@
     "compile": "npx tsc -p ./",
     "watch": "npx tsc -watch -p ./",
     "lint": "eslint src --ext ts",
-    "package": "npx @vscode/vsce package"
+    "package": "npx @vscode/vsce package -o perch-0.0.3.vsix"
   },
   "devDependencies": {
     "@types/vscode": "^1.85.0",

@@ -4,3 +4,4 @@ out/
 .vscode-test/
 *.js.map
 graphify-out/
+.DS_Store

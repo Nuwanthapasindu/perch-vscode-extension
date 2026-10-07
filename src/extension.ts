@@ -54,7 +54,7 @@ export function activate(context: vscode.ExtensionContext): void {
     // ── Terminal lifecycle tracking ───────────────────────────────────────────
     context.subscriptions.push(
         vscode.window.onDidCloseTerminal((terminal) => {
-            if (terminalManager.isAntigravityTerminal(terminal)) {
+            if (terminalManager.isPerchTerminal(terminal)) {
                 terminalManager.onTerminalClosed();
                 statusBarManager.setIdle();
             }
