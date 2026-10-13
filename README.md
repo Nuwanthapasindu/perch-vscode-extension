@@ -2,10 +2,12 @@
 
 > Open Google's **Antigravity CLI** (`agy`) directly inside VS Code — perched on a dedicated **right-side panel**, providing a side-panel experience similar to other AI coding extensions.
 
+> Perch was previously published on the Marketplace as *Antigravity CLI*.
+
 > **Disclaimer:** Perch is an independent project and is not affiliated with, sponsored by, or endorsed by Google. Antigravity is a trademark of Google LLC. Perch requires Google's Antigravity CLI (`agy`) to be installed separately.
 
-[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/nuwanthapasindu.antigravity-cli?label=VS%20Code%20Marketplace&logo=visual-studio-code&logoColor=white&color=0078d7)](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.antigravity-cli)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/nuwanthapasindu.antigravity-cli?color=brightgreen)](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.antigravity-cli)
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/nuwanthapasindu.perch?label=VS%20Code%20Marketplace&logo=visual-studio-code&logoColor=white&color=0078d7)](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/nuwanthapasindu.perch?color=brightgreen)](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch)
 
 <p align="center">
   <img src="icon.png" alt="Perch Extension Icon" width="160" />
@@ -90,7 +92,7 @@ If `agy` is not found, install it following the official Google Antigravity CLI 
 
 The extension is **published on the VS Code Marketplace** — install it in one click:
 
-**[Install Perch on VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.antigravity-cli)**
+**[Install Perch on VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch)**
 
 Or search for **`Perch`** in the VS Code Extensions panel (`Cmd+Shift+X`).
 
@@ -105,12 +107,12 @@ If you prefer to install manually from a `.vsix` file:
 1. Open VS Code
 2. Press `Cmd+Shift+P` (Mac) / `Ctrl+Shift+P` (Windows/Linux)
 3. Type `Extensions: Install from VSIX...` and press Enter
-4. Select `perch-0.0.3.vsix`
+4. Select `perch-0.1.0.vsix`
 
 **Or install via terminal:**
 
 ```bash
-code --install-extension perch-0.0.3.vsix
+code --install-extension perch-0.1.0.vsix
 ```
 
 **Reload VS Code:**
@@ -142,7 +144,7 @@ npm run compile
 npm run package
 
 # 5. Install the VSIX into VS Code
-code --install-extension perch-0.0.3.vsix
+code --install-extension perch-0.1.0.vsix
 
 # 6. Reload VS Code
 # Cmd+Shift+P → Developer: Reload Window
@@ -202,7 +204,7 @@ out/
 npm run package
 ```
 
-This runs `vsce package` and produces `perch-0.0.3.vsix`.
+This runs `vsce package` and produces `perch-0.1.0.vsix`.
 
 > **Note:** The VSIX package contains only compiled `out/` files, `resources/`, `icon.png`, `package.json`, and `README.md`. Source files and `node_modules` are excluded via `.vscodeignore`.
 
@@ -284,8 +286,8 @@ For existing installations, Perch seamlessly falls back to legacy settings if co
 
 | Legacy Setting | Status | Replacement |
 |---|---|---|
-| `antigravity.executable` | Deprecated | `perch.executable` |
-| `antigravity.defaultArgs` | Deprecated | `perch.defaultArgs` |
+| `antigravity.executable` | Deprecated (still honored) | `perch.executable` |
+| `antigravity.defaultArgs` | Deprecated (still honored) | `perch.defaultArgs` |
 
 ### Example: Custom executable path
 
