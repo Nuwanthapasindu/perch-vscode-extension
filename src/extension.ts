@@ -3,7 +3,7 @@ import { TerminalManager } from './terminalManager';
 import { StatusBarManager } from './statusBarManager';
 import { WelcomeViewProvider } from './welcomeViewProvider';
 
-const NEW_ID = 'nuwanthapasindu.perch';
+const NEW_ID = 'nuwanthapasindu.perch-for-agy';
 const OLD_ID = 'nuwanthapasindu.antigravity-cli';
 const HIDE_KEY = 'perchMoveNoticeHidden';
 

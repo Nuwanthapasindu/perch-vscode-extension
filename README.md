@@ -1,5 +1,5 @@
 > ⚠️ **This extension has moved.** It is now published as **Perch for Google Antigravity CLI**:
-> https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch
+> https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch-for-agy
 > This listing will be removed soon. Please install the new one.
 
 # Perch — VS Code Side Panel for Google Antigravity CLI
