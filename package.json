@@ -1,8 +1,8 @@
 {
-  "name": "antigravity-cli",
+  "name": "perch",
   "displayName": "Perch for Google Antigravity CLI",
   "description": "Open Google's Antigravity CLI in a dedicated right-side panel in VS Code. Independent project, not affiliated with or endorsed by Google.",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "publisher": "nuwanthapasindu",
   "license": "MIT",
   "icon": "icon.png",
@@ -34,22 +34,22 @@
   "contributes": {
     "commands": [
       {
-        "command": "antigravity.openTerminal",
+        "command": "perch.openTerminal",
         "title": "Open Terminal",
         "category": "Perch",
         "icon": {
-          "light": "resources/icon.svg",
-          "dark": "resources/icon.svg"
+          "light": "resources/icon-light.svg",
+          "dark": "resources/icon-dark.svg"
         }
       },
       {
-        "command": "antigravity.restartTerminal",
+        "command": "perch.restartTerminal",
         "title": "Restart Terminal",
         "category": "Perch",
         "icon": "$(debug-restart)"
       },
       {
-        "command": "antigravity.stopTerminal",
+        "command": "perch.stopTerminal",
         "title": "Stop Terminal",
         "category": "Perch",
         "icon": "$(debug-stop)"
@@ -57,7 +57,7 @@
     ],
     "keybindings": [
       {
-        "command": "antigravity.openTerminal",
+        "command": "perch.openTerminal",
         "key": "ctrl+shift+a",
         "mac": "cmd+shift+a"
       }
@@ -65,17 +65,17 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "antigravity-sidebar",
+          "id": "perch-sidebar",
           "title": "Perch",
           "icon": "resources/icon.svg"
         }
       ]
     },
     "views": {
-      "antigravity-sidebar": [
+      "perch-sidebar": [
         {
           "type": "webview",
-          "id": "antigravity.welcomeView",
+          "id": "perch.welcomeView",
           "name": "Perch"
         }
       ]
@@ -84,7 +84,7 @@
       "profiles": [
         {
           "title": "Perch",
-          "id": "antigravity.terminalProfile",
+          "id": "perch.terminalProfile",
           "icon": "terminal"
         }
       ]
@@ -104,28 +104,13 @@
             "type": "string"
           },
           "description": "Default arguments to pass to the CLI executable on launch."
-        },
-        "antigravity.executable": {
-          "type": "string",
-          "default": "agy",
-          "description": "Legacy setting: Path to the agy executable.",
-          "deprecationMessage": "This setting is deprecated. Please use 'perch.executable' instead."
-        },
-        "antigravity.defaultArgs": {
-          "type": "array",
-          "default": [],
-          "items": {
-            "type": "string"
-          },
-          "description": "Legacy setting: Default arguments to pass to agy on launch.",
-          "deprecationMessage": "This setting is deprecated. Please use 'perch.defaultArgs' instead."
         }
       }
     },
     "menus": {
       "editor/title": [
         {
-          "command": "antigravity.openTerminal",
+          "command": "perch.openTerminal",
           "group": "navigation",
           "when": "true"
         }
@@ -137,7 +122,7 @@
     "compile": "npx tsc -p ./",
     "watch": "npx tsc -watch -p ./",
     "lint": "eslint src --ext ts",
-    "package": "npx @vscode/vsce package -o perch-0.0.3.vsix"
+    "package": "npx @vscode/vsce package -o perch-$npm_package_version.vsix"
   },
   "devDependencies": {
     "@types/vscode": "^1.85.0",

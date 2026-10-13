@@ -13,17 +13,17 @@ export function activate(context: vscode.ExtensionContext): void {
 
     // ── Commands ─────────────────────────────────────────────────────────────
     context.subscriptions.push(
-        vscode.commands.registerCommand('antigravity.openTerminal', () => {
+        vscode.commands.registerCommand('perch.openTerminal', () => {
             terminalManager.openOrFocusTerminal();
             statusBarManager.setRunning();
         }),
 
-        vscode.commands.registerCommand('antigravity.restartTerminal', () => {
+        vscode.commands.registerCommand('perch.restartTerminal', () => {
             terminalManager.restartTerminal();
             statusBarManager.setRunning();
         }),
 
-        vscode.commands.registerCommand('antigravity.stopTerminal', () => {
+        vscode.commands.registerCommand('perch.stopTerminal', () => {
             terminalManager.stopTerminal();
             statusBarManager.setIdle();
         })
@@ -32,7 +32,7 @@ export function activate(context: vscode.ExtensionContext): void {
     // ── Sidebar webview ───────────────────────────────────────────────────────
     context.subscriptions.push(
         vscode.window.registerWebviewViewProvider(
-            'antigravity.welcomeView',
+            'perch.welcomeView',
             welcomeViewProvider
         )
     );
@@ -40,7 +40,7 @@ export function activate(context: vscode.ExtensionContext): void {
     // ── Terminal profile provider ─────────────────────────────────────────────
     context.subscriptions.push(
         vscode.window.registerTerminalProfileProvider(
-            'antigravity.terminalProfile',
+            'perch.terminalProfile',
             {
                 provideTerminalProfile(): vscode.TerminalProfile {
                     return new vscode.TerminalProfile(

@@ -12,7 +12,7 @@ export class StatusBarManager {
             vscode.StatusBarAlignment.Left,
             100
         );
-        this.statusBarItem.command = 'antigravity.openTerminal';
+        this.statusBarItem.command = 'perch.openTerminal';
         this.setIdle();
         this.statusBarItem.show();
         context.subscriptions.push(this.statusBarItem);

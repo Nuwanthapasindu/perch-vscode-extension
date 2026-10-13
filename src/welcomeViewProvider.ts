@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 export class WelcomeViewProvider implements vscode.WebviewViewProvider {
-    public static readonly viewType = 'antigravity.welcomeView';
+    public static readonly viewType = 'perch.welcomeView';
 
     constructor(
         private readonly extensionUri: vscode.Uri,
@@ -29,13 +29,13 @@ export class WelcomeViewProvider implements vscode.WebviewViewProvider {
         webviewView.webview.onDidReceiveMessage((message: { command: string }) => {
             switch (message.command) {
                 case 'openTerminal':
-                    vscode.commands.executeCommand('antigravity.openTerminal');
+                    vscode.commands.executeCommand('perch.openTerminal');
                     break;
                 case 'restartTerminal':
-                    vscode.commands.executeCommand('antigravity.restartTerminal');
+                    vscode.commands.executeCommand('perch.restartTerminal');
                     break;
                 case 'stopTerminal':
-                    vscode.commands.executeCommand('antigravity.stopTerminal');
+                    vscode.commands.executeCommand('perch.stopTerminal');
                     break;
                 case 'openSettings':
                     vscode.commands.executeCommand(
