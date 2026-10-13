@@ -2,7 +2,7 @@
   "name": "antigravity-cli",
   "displayName": "Perch for Google Antigravity CLI",
   "description": "Open Google's Antigravity CLI in a dedicated right-side panel in VS Code. Independent project, not affiliated with or endorsed by Google.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "nuwanthapasindu",
   "license": "MIT",
   "icon": "icon.png",
@@ -137,7 +137,7 @@
     "compile": "npx tsc -p ./",
     "watch": "npx tsc -watch -p ./",
     "lint": "eslint src --ext ts",
-    "package": "npx @vscode/vsce package -o perch-0.0.3.vsix"
+    "package": "npx @vscode/vsce package -o antigravity-cli-0.0.4.vsix"
   },
   "devDependencies": {
     "@types/vscode": "^1.85.0",
