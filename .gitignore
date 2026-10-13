@@ -5,3 +5,6 @@ out/
 *.js.map
 graphify-out/
 .DS_Store
+migration/
+CLAUDE.md
+.agents/

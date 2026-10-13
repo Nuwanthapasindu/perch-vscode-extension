@@ -8,3 +8,5 @@ node_modules/**
 *.vsix
 .agents/**
 graphify-out/**
+migration/**
+CLAUDE.md
