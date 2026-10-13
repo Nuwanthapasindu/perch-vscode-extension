@@ -1,6 +1,6 @@
 {
   "name": "antigravity-cli",
-  "displayName": "Perch for Google Antigravity CLI",
+  "displayName": "Perch (moved)",
   "description": "Open Google's Antigravity CLI in a dedicated right-side panel in VS Code. Independent project, not affiliated with or endorsed by Google.",
   "version": "0.0.4",
   "publisher": "nuwanthapasindu",
