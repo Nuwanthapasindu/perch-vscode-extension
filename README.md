@@ -1,3 +1,7 @@
+> ⚠️ **This extension has moved.** It is now published as **Perch for Google Antigravity CLI**:
+> https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch
+> This listing will be removed soon. Please install the new one.
+
 # Perch — VS Code Side Panel for Google Antigravity CLI
 
 > Open Google's **Antigravity CLI** (`agy`) directly inside VS Code — perched on a dedicated **right-side panel**, providing a side-panel experience similar to other AI coding extensions.
