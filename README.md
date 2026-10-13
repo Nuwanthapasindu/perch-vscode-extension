@@ -2,8 +2,6 @@
 
 > Open Google's **Antigravity CLI** (`agy`) directly inside VS Code — perched on a dedicated **right-side panel**, providing a side-panel experience similar to other AI coding extensions.
 
-> Perch was previously published on the Marketplace as *Antigravity CLI*.
-
 > **Disclaimer:** Perch is an independent project and is not affiliated with, sponsored by, or endorsed by Google. Antigravity is a trademark of Google LLC. Perch requires Google's Antigravity CLI (`agy`) to be installed separately.
 
 [![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/nuwanthapasindu.perch-for-agy?label=VS%20Code%20Marketplace&logo=visual-studio-code&logoColor=white&color=0078d7)](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch-for-agy)
@@ -107,12 +105,12 @@ If you prefer to install manually from a `.vsix` file:
 1. Open VS Code
 2. Press `Cmd+Shift+P` (Mac) / `Ctrl+Shift+P` (Windows/Linux)
 3. Type `Extensions: Install from VSIX...` and press Enter
-4. Select `perch-0.1.0.vsix`
+4. Select `perch-0.1.1.vsix`
 
 **Or install via terminal:**
 
 ```bash
-code --install-extension perch-0.1.0.vsix
+code --install-extension perch-0.1.1.vsix
 ```
 
 **Reload VS Code:**
@@ -144,7 +142,7 @@ npm run compile
 npm run package
 
 # 5. Install the VSIX into VS Code
-code --install-extension perch-0.1.0.vsix
+code --install-extension perch-0.1.1.vsix
 
 # 6. Reload VS Code
 # Cmd+Shift+P → Developer: Reload Window
@@ -204,7 +202,7 @@ out/
 npm run package
 ```
 
-This runs `vsce package` and produces `perch-0.1.0.vsix`.
+This runs `vsce package` and produces `perch-0.1.1.vsix`.
 
 > **Note:** The VSIX package contains only compiled `out/` files, `resources/`, `icon.png`, `package.json`, and `README.md`. Source files and `node_modules` are excluded via `.vscodeignore`.
 

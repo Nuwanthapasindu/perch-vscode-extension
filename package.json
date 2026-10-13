@@ -2,7 +2,7 @@
   "name": "perch-for-agy",
   "displayName": "Perch for Google Antigravity CLI",
   "description": "Open Google's Antigravity CLI in a dedicated right-side panel in VS Code. Independent project, not affiliated with or endorsed by Google.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "nuwanthapasindu",
   "license": "MIT",
   "icon": "icon.png",
