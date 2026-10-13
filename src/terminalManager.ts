@@ -1,5 +1,18 @@
 import * as vscode from 'vscode';
 
+/**
+ * Reads a setting from 'perch.<key>', falling back to the legacy
+ * 'antigravity.<key>' when only the latter is explicitly set. Both default to
+ * the same value, so the explicit (user-set) values are compared via inspect().
+ */
+function getSetting<T>(key: 'executable' | 'defaultArgs', fallback: T): T {
+    const pick = <V>(i?: { workspaceFolderValue?: V; workspaceValue?: V; globalValue?: V }) =>
+        i?.workspaceFolderValue ?? i?.workspaceValue ?? i?.globalValue;
+    const perch = vscode.workspace.getConfiguration('perch').inspect<T>(key);
+    const legacy = vscode.workspace.getConfiguration('antigravity').inspect<T>(key);
+    return pick(perch) ?? pick(legacy) ?? perch?.defaultValue ?? fallback;
+}
+
 export class TerminalManager {
     private terminal: vscode.Terminal | undefined;
     private static readonly TERMINAL_NAME = 'Perch';
@@ -25,8 +38,8 @@ export class TerminalManager {
      * matching a side-panel experience similar to other AI coding extensions.
      */
     getTerminalOptions(): vscode.TerminalOptions {
-        const executable = this.getConfigValue<string>('executable', 'agy');
-        const defaultArgs = this.getConfigValue<string[]>('defaultArgs', []);
+        const executable = getSetting<string>('executable', 'agy');
+        const defaultArgs = getSetting<string[]>('defaultArgs', []);
         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
 
         return {
@@ -81,39 +94,5 @@ export class TerminalManager {
             return false;
         }
         return vscode.window.terminals.includes(this.terminal);
-    }
-
-    /**
-     * Reads a setting with automatic backward-compatibility fallback.
-     * Checks 'perch.<key>' first; if not explicitly set, falls back to
-     * legacy 'antigravity.<key>' if present, otherwise returns defaultValue.
-     */
-    private getConfigValue<T>(key: string, defaultValue: T): T {
-        const perchConfig = vscode.workspace.getConfiguration('perch');
-        const legacyConfig = vscode.workspace.getConfiguration('antigravity');
-
-        const perchInspect = perchConfig.inspect<T>(key);
-        const hasPerchExplicit = perchInspect && (
-            perchInspect.globalValue !== undefined ||
-            perchInspect.workspaceValue !== undefined ||
-            perchInspect.workspaceFolderValue !== undefined
-        );
-
-        if (hasPerchExplicit) {
-            return perchConfig.get<T>(key, defaultValue);
-        }
-
-        const legacyInspect = legacyConfig.inspect<T>(key);
-        const hasLegacyExplicit = legacyInspect && (
-            legacyInspect.globalValue !== undefined ||
-            legacyInspect.workspaceValue !== undefined ||
-            legacyInspect.workspaceFolderValue !== undefined
-        );
-
-        if (hasLegacyExplicit) {
-            return legacyConfig.get<T>(key, defaultValue);
-        }
-
-        return perchConfig.get<T>(key, defaultValue);
     }
 }
