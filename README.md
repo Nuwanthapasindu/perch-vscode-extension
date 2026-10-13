@@ -6,8 +6,8 @@
 
 > **Disclaimer:** Perch is an independent project and is not affiliated with, sponsored by, or endorsed by Google. Antigravity is a trademark of Google LLC. Perch requires Google's Antigravity CLI (`agy`) to be installed separately.
 
-[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/nuwanthapasindu.perch?label=VS%20Code%20Marketplace&logo=visual-studio-code&logoColor=white&color=0078d7)](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/nuwanthapasindu.perch?color=brightgreen)](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch)
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/nuwanthapasindu.perch-for-agy?label=VS%20Code%20Marketplace&logo=visual-studio-code&logoColor=white&color=0078d7)](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch-for-agy)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/nuwanthapasindu.perch-for-agy?color=brightgreen)](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch-for-agy)
 
 <p align="center">
   <img src="icon.png" alt="Perch Extension Icon" width="160" />
@@ -92,7 +92,7 @@ If `agy` is not found, install it following the official Google Antigravity CLI 
 
 The extension is **published on the VS Code Marketplace** — install it in one click:
 
-**[Install Perch on VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch)**
+**[Install Perch on VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=nuwanthapasindu.perch-for-agy)**
 
 Or search for **`Perch`** in the VS Code Extensions panel (`Cmd+Shift+X`).
 
